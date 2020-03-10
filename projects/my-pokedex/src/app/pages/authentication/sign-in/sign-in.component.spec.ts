@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { JwtModule } from '@auth0/angular-jwt';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { SignInComponent } from './sign-in.component';
 
@@ -8,7 +12,19 @@ describe('SignInComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SignInComponent]
+      providers: [],
+      declarations: [SignInComponent],
+      imports: [
+        RouterTestingModule,
+        HttpClientModule,
+        JwtModule.forRoot({
+          config: {
+            tokenGetter,
+            whitelistedDomains: ['localhost:4200']
+          }
+        })
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
 
@@ -22,3 +38,7 @@ describe('SignInComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}

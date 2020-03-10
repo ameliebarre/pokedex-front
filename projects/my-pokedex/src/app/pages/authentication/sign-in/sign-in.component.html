@@ -1,1 +1,45 @@
-<p>sign-in works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="form-container d-flex align-items-center">
+      <form (submit)="onSubmit()" [formGroup]="loginForm" class="box account-form col-lg-4 m-auto">
+        <span class="pokeball-icon"></span>
+        <div class="form-groups w-100 mt-4">
+          <!-- Email -->
+          <div class="form-group pb-4">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email" />
+            <span *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors.required">
+              Email is required.
+            </span>
+            <span *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors.invalidEmail">
+              Value has to be a valid email address.
+            </span>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" class="form-control" formControlName="password" />
+            <span *ngIf="(password?.dirty || password?.touched) && password?.invalid && password?.errors.required">
+              Password is required.
+            </span>
+          </div>
+
+          <div class="form-group">
+            <a class="forgot-password" routerLink="/forgot-password">Mot de passe perdu ?</a>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn submit-button col-lg-5 d-lg-block m-lg-auto" [disabled]="!loginForm.valid">
+              Me connecter
+            </button>
+          </div>
+
+          <div class="form-group">
+            <a routerLink="/signup" class="signup-link">Je ne suis pas encore membre</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
