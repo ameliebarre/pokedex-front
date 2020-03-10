@@ -6,6 +6,7 @@ import { LayoutRoutes } from './layout.routes';
 
 @NgModule({
   declarations: [LayoutComponent],
-  imports: [CommonModule, SharedModule, LayoutRoutes]
+  imports: [CommonModule, SharedModule, LayoutRoutes],
+  exports: []
 })
 export class LayoutModule {}
