@@ -1,5 +1,7 @@
 export class User {
   _id: string;
+  name: string;
+  firstname: string;
   username: string;
   password: string;
   email: string;
@@ -14,6 +16,8 @@ export class User {
   constructor(obj?: any) {
     this._id = (obj && obj.id) || null;
     this.username = (obj && obj.username) || null;
+    this.name = (obj && obj.name) || null;
+    this.firstname = (obj && obj.firstname) || null;
     this.password = (obj && obj.password) || null;
     this.email = (obj && obj.email) || null;
     this.token = (obj && obj.token) || null;

@@ -1,1 +1,114 @@
-<p>sign-up works</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="form-container d-flex align-items-center">
+      <form (submit)="onSubmit()" [formGroup]="registerForm" class="box account-form col-lg-4 m-auto">
+        <span class="pokeball-icon"></span>
+        <div class="form-groups w-100 mt-4">
+          <!-- Name -->
+          <div class="form-group pb-4">
+            <label for="name">Nom <span class="mandatory">*</span></label>
+            <input
+              type="name"
+              id="name"
+              class="form-control"
+              formControlName="name"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+            />
+            <div *ngIf="submitted && f.name.errors" class="invalid-field">
+              <div *ngIf="f.name.errors.required">
+                Ce champ est obligatoire
+              </div>
+            </div>
+          </div>
+
+          <!-- Firstname -->
+          <div class="form-group pb-4">
+            <label for="firstname">Prénom <span class="mandatory">*</span></label>
+            <input
+              type="firstname"
+              id="firstname"
+              class="form-control"
+              formControlName="firstname"
+              [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"
+            />
+            <div *ngIf="submitted && f.firstname.errors" class="invalid-field">
+              <div *ngIf="f.firstname.errors.required">Ce champ est obligatoire</div>
+            </div>
+          </div>
+
+          <!-- Username -->
+          <div class="form-group pb-4">
+            <label for="username">Nom d'utilisateur <span class="mandatory">*</span></label>
+            <input
+              type="username"
+              id="username"
+              class="form-control"
+              formControlName="username"
+              [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+            />
+            <div *ngIf="submitted && f.username.errors" class="invalid-field">
+              <div *ngIf="f.username.errors.required">Ce champ est obligatoire</div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group pb-4">
+            <label for="email">Email <span class="mandatory">*</span></label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              formControlName="email"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            />
+            <div *ngIf="submitted && f.email.errors" class="invalid-field">
+              <div *ngIf="f.email.errors.required">Ce champ est obligatoire</div>
+              <div *ngIf="f.email.errors.email">L'email est invalide</div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group pb-4">
+            <label for="password">Mot de passe <span class="mandatory">*</span></label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              formControlName="password"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            />
+            <div *ngIf="submitted && f.password.errors" class="invalid-field">
+              <div *ngIf="f.password.errors.required">Ce champ est obligatoire</div>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label for="confirmPassword">Confirmation du mot de passe <span class="mandatory">*</span></label>
+            <input
+              type="confirmPassword"
+              id="confirmPassword"
+              class="form-control"
+              formControlName="confirmPassword"
+              [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
+            />
+            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-field">
+              <div *ngIf="f.confirmPassword.errors.required">Ce champ est obligatoire</div>
+              <div *ngIf="f.confirmPassword.errors.mustMatch">Les mots de passe ne sont pas identiques</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn submit-button col-lg-5 d-lg-block m-lg-auto">
+              M'inscrire
+            </button>
+          </div>
+
+          <div class="form-group">
+            <a routerLink="/signin" class="signin-link">J'ai déjà un compte</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

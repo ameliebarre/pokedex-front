@@ -47,11 +47,11 @@
       }
 
       .form-control {
-        font-size: 1rem;
+        font-size: 0.75rem;
         padding: 11px;
         padding-right: 5px;
         border: 1px solid $main-red;
-        color: $account-form-text;
+        color: $black;
         box-shadow: none;
         background-color: #fff;
         margin: 0;
@@ -60,10 +60,18 @@
         height: 50px;
       }
 
-      .text-danger {
-        color: $main-red;
+      .invalid-field {
+        color: darken($main-red, 20%);
         text-align: left;
-        padding-left: 5px;
+        padding: 5px 0 5px;
+      }
+
+      .is-invalid {
+        border: 2px solid darken($main-red, 20%);
+      }
+
+      .mandatory {
+        color: $main-red;
       }
 
       .submit-button {

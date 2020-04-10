@@ -41,6 +41,7 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit() {
+    // Login and redirect to homepage
     console.log('submit form');
   }
 
