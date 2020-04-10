@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // import custom validator to validate that password and confirm password fields match
 import { MustMatch } from 'projects/my-pokedex/src/app/shared/helpers/must-match.validator';
@@ -19,7 +19,11 @@ export class SignUpComponent implements OnInit {
     this.createFormGroup();
   }
 
-  createFormGroup() {
+  /**
+   * Set up register form
+   * @returns {void}
+   */
+  createFormGroup(): void {
     this.registerForm = this.formBuilder.group(
       {
         name: ['', Validators.required],

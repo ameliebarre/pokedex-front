@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { SignInComponent } from './sign-in.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('SignInComponent', () => {
   let component: SignInComponent;
@@ -15,6 +16,7 @@ describe('SignInComponent', () => {
       providers: [],
       declarations: [SignInComponent],
       imports: [
+        ReactiveFormsModule,
         RouterTestingModule,
         HttpClientModule,
         JwtModule.forRoot({

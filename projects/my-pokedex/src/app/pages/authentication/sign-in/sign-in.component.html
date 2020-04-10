@@ -6,23 +6,32 @@
         <div class="form-groups w-100 mt-4">
           <!-- Email -->
           <div class="form-group pb-4">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="form-control" formControlName="email" />
-            <span *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors.required">
-              Email is required.
-            </span>
-            <span *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors.invalidEmail">
-              Value has to be a valid email address.
-            </span>
+            <label for="email">Email <span class="mandatory">*</span></label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              formControlName="email"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            />
+            <div *ngIf="submitted && f.email.errors" class="invalid-field">
+              <div *ngIf="f.email.errors.required">Ce champ est obligatoire</div>
+            </div>
           </div>
 
           <!-- Password -->
           <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" class="form-control" formControlName="password" />
-            <span *ngIf="(password?.dirty || password?.touched) && password?.invalid && password?.errors.required">
-              Password is required.
-            </span>
+            <label for="password">Mot de passe <span class="mandatory">*</span></label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              formControlName="password"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            />
+            <div *ngIf="submitted && f.password.errors" class="invalid-field">
+              <div *ngIf="f.password.errors.required">Ce champ est obligatoire</div>
+            </div>
           </div>
 
           <div class="form-group">
@@ -30,7 +39,7 @@
           </div>
 
           <div class="form-group">
-            <button type="submit" class="btn submit-button col-lg-5 d-lg-block m-lg-auto" [disabled]="!loginForm.valid">
+            <button type="submit" class="btn submit-button col-lg-5 d-lg-block m-lg-auto">
               Me connecter
             </button>
           </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from 'projects/my-pokedex/src/app/shared/services/authentication.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { AuthenticationService } from 'projects/my-pokedex/src/app/shared/services/authentication.service';
 
 @Component({
   selector: 'px-sign-in',
@@ -10,13 +11,13 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
   public loginForm: FormGroup;
+  public submitted = false;
 
-  constructor(private authService: AuthenticationService, private router: Router) {
-    this.loginForm = this.createFormGroup();
-  }
+  constructor(private authService: AuthenticationService, private router: Router, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.isAUthenticated();
+    this.createFormGroup();
   }
 
   /**
@@ -33,23 +34,26 @@ export class SignInComponent implements OnInit {
    * Set up login form
    * @returns {void}
    */
-  createFormGroup(): FormGroup {
-    return new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
+  createFormGroup(): void {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     });
   }
 
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.loginForm.controls;
+  }
+
   onSubmit() {
-    // Login and redirect to homepage
-    console.log('submit form');
-  }
+    this.submitted = true;
 
-  get email() {
-    return this.loginForm.get('email');
-  }
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return;
+    }
 
-  get password() {
-    return this.loginForm.get('password');
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value));
   }
 }
