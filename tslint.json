@@ -7,6 +7,9 @@
     "deprecation": {
       "severity": "warning"
     },
+    "variable-name": {
+      "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
+    },
     "import-blacklist": [true, "rxjs/Rx"],
     "interface-name": false,
     "max-classes-per-file": false,

@@ -4,11 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-
-interface UserResponse {
-  user: any;
-  token: string;
-}
+import { Observable } from 'rxjs';
+import { UserResponse } from 'projects/my-pokedex/src/app/shared/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +24,6 @@ export class AuthenticationService {
       .pipe(
         tap(req => {
           this.storeUserData(req);
-          this.router.navigate(['home']);
         })
       )
       .toPromise();
@@ -38,16 +34,15 @@ export class AuthenticationService {
    * @param email
    * @param password
    */
-  signin(email: string, password: string): Promise<UserResponse> {
+  signin(email: string, password: string): Observable<UserResponse> {
     return this.http
       .post<UserResponse>(`${environment.apiUrl}/auth/signin`, { email, password })
       .pipe(
-        tap(req => {
-          this.storeUserData(req);
-          this.router.navigate(['home']);
+        tap((user: UserResponse) => {
+          this.storeUserData(user);
+          return user;
         })
-      )
-      .toPromise();
+      );
   }
 
   /**

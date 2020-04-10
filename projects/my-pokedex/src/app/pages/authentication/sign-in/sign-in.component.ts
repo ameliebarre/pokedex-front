@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from 'projects/my-pokedex/src/app/shared/services/authentication.service';
+import { UserResponse } from 'projects/my-pokedex/src/app/shared/interfaces/user.interface';
 
 @Component({
   selector: 'px-sign-in',
@@ -54,6 +56,14 @@ export class SignInComponent implements OnInit {
       return;
     }
 
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value));
+    const { email, password } = this.loginForm.value;
+    this.authService.signin(email, password).subscribe(
+      (user: UserResponse) => {
+        location.pathname = '/home';
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
   }
 }
