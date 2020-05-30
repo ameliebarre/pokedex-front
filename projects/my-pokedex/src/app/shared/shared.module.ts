@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   exports: [CommonModule, RouterModule, HttpClientModule, ReactiveFormsModule, FormsModule],
   declarations: [HomeComponent]
 })
