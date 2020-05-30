@@ -7,6 +7,9 @@
     "deprecation": {
       "severity": "warning"
     },
+    "variable-name": {
+      "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
+    },
     "import-blacklist": [true, "rxjs/Rx"],
     "interface-name": false,
     "max-classes-per-file": false,
@@ -23,7 +26,7 @@
     "no-empty": false,
     "no-inferrable-types": [true, "ignore-params"],
     "no-non-null-assertion": true,
-    "no-redundant-jsdoc": true,
+    "no-redundant-jsdoc": false,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [true, "as-needed"],

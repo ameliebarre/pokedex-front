@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="form-container d-flex align-items-center">
+      <form (submit)="onSubmit()" [formGroup]="loginForm" class="box account-form col-lg-4 m-auto">
+        <span class="pokeball-icon"></span>
+        <div class="form-groups w-100 mt-4">
+          <!-- Email -->
+          <div class="form-group pb-4">
+            <label for="email">Email <span class="mandatory">*</span></label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              formControlName="email"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            />
+            <div *ngIf="submitted && f.email.errors" class="invalid-field">
+              <div *ngIf="f.email.errors.required">Ce champ est obligatoire</div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Mot de passe <span class="mandatory">*</span></label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              formControlName="password"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            />
+            <div *ngIf="submitted && f.password.errors" class="invalid-field">
+              <div *ngIf="f.password.errors.required">Ce champ est obligatoire</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <a class="forgot-password" routerLink="/forgot-password">Mot de passe perdu ?</a>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn submit-button col-lg-5 d-lg-block m-lg-auto">
+              Me connecter
+            </button>
+          </div>
+
+          <div class="form-group">
+            <a routerLink="/signup" class="signup-link">Je ne suis pas encore membre</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

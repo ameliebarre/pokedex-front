@@ -1,0 +1,91 @@
+@import '../../../imports';
+
+::ng-deep body {
+  background-color: $main-red;
+}
+
+/** Form **/
+::ng-deep .form-container {
+  height: 100vh;
+  width: 100%;
+
+  .account-form {
+    background: white;
+    padding: 30px 20px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .pokeball-icon {
+      background: url('../../../assets/images/pokeball.svg') center center no-repeat;
+      width: 60px;
+      height: 60px;
+      display: block;
+      top: -30px;
+      position: absolute;
+      background-color: white;
+      border-radius: 100%;
+      background-size: 65%;
+    }
+
+    .form-group {
+      position: relative;
+      width: 100%;
+
+      label {
+        color: $account-form-text;
+        background: white;
+        padding: 5px;
+        font-family: 'Lato', 'Montserrat', Arial, sans-serif;
+        position: absolute;
+        top: -0.9em;
+        left: calc(0.75rem - 2px);
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      .form-control {
+        font-size: 0.75rem;
+        padding: 11px;
+        padding-right: 5px;
+        border: 1px solid $main-red;
+        color: $black;
+        box-shadow: none;
+        background-color: #fff;
+        margin: 0;
+        flex: 1;
+        border-radius: 7px;
+        height: 50px;
+      }
+
+      .invalid-field {
+        color: darken($main-red, 20%);
+        text-align: left;
+        padding: 5px 0 5px;
+      }
+
+      .is-invalid {
+        border: 2px solid darken($main-red, 20%);
+      }
+
+      .mandatory {
+        color: $main-red;
+      }
+
+      .submit-button {
+        background: $main-red;
+        font-family: 'Lato', 'Montserrat', Arial, sans-serif;
+        color: white;
+        box-shadow: none;
+      }
+
+      .signup-link,
+      .signin-link {
+        color: $main-red;
+        font-size: 11px;
+      }
+    }
+  }
+}
